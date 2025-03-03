@@ -1,0 +1,15 @@
+class Solution:
+    def pivotArray(self, nums: List[int], pivot: int) -> List[int]:
+        smaller = []
+        equal = []
+        greater = []
+
+        for elem in nums:
+            if elem < pivot:
+                smaller.append(elem)
+            elif elem == pivot:
+                equal.append(elem)
+            else:
+                greater.append(elem)
+        return smaller + equal + greater
+
