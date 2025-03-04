@@ -1,0 +1,19 @@
+class Solution:
+    def checkPowersOfThree(self, n: int) -> bool:
+        def biggest_3(n: int, last_big: int) -> int:
+            big = 1
+            while big <= n:
+                big *= 3
+            big = big // 3
+            if last_big == big:
+                return -1
+            return big
+            
+        last_big = 0
+        while n > 0:
+            big = biggest_3(n, last_big)
+            if big == -1:
+                return False
+            last_big = big
+            n -= big
+        return n == 0
