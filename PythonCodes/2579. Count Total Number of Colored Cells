@@ -1,0 +1,8 @@
+class Solution:
+    def coloredCells(self, n: int) -> int:
+        # sums = 1
+        # for i in range(n):
+        #     print(i)
+        #     sums += 4 * i
+        # return sums
+        return n * (n-1) * 2 + 1
