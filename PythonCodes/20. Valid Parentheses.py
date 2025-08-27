@@ -10,36 +10,59 @@ An input string is valid if:
 '''
 class Solution:
     def isValid(self, s: str) -> bool:
-        stack = []
+        p_open = f'([{{'
+        p_closed = {')' : '(',
+                    '}' : '{',
+                    ']' : '['
+        }
+        queue = []
         for elem in s:
-            match elem:
-                case '{':
-                    stack.append(elem)
-                case '}':
-                    if not stack:
-                        return False
-                    if stack[-1] is '{':
-                        stack.pop()
-                    else:
-                        return False
-                case '[':
-                    stack.append(elem)
-                case ']':
-                    if not stack:
-                        return False
-                    if stack[-1] is '[':
-                        stack.pop()
-                    else:
-                        return False
-                case '(':
-                    stack.append(elem)
-                case ')':
-                    if not stack:
-                        return False
-                    if stack[-1] is '(':
-                        stack.pop()
-                    else:
-                        return False
-        if not stack:
-            return True
-        return False
+            if elem in p_open:
+                queue.append(elem)
+            elif elem in p_closed:
+                if not queue:
+                    return False
+                    
+                poped = queue.pop()
+                if p_closed[elem] != poped:
+                    return False
+        if queue: return False
+        return True
+
+
+# OLD SOLUTION
+# class Solution:
+#     def isValid(self, s: str) -> bool:
+#         stack = []
+#         for elem in s:
+#             match elem:
+#                 case '{':
+#                     stack.append(elem)
+#                 case '}':
+#                     if not stack:
+#                         return False
+#                     if stack[-1] is '{':
+#                         stack.pop()
+#                     else:
+#                         return False
+#                 case '[':
+#                     stack.append(elem)
+#                 case ']':
+#                     if not stack:
+#                         return False
+#                     if stack[-1] is '[':
+#                         stack.pop()
+#                     else:
+#                         return False
+#                 case '(':
+#                     stack.append(elem)
+#                 case ')':
+#                     if not stack:
+#                         return False
+#                     if stack[-1] is '(':
+#                         stack.pop()
+#                     else:
+#                         return False
+#         if not stack:
+#             return True
+#         return False
