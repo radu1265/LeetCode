@@ -12,5 +12,5 @@ class Solution:
             if node.val == val:
                 return node
             if node.val > val and node.left: nodes.append(node.left)
-            if node.val < val and node.right: nodes.append(node.right)
+            elif node.val < val and node.right: nodes.append(node.right)
         return None
