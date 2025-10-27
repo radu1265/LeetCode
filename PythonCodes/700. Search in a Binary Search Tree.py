@@ -11,6 +11,6 @@ class Solution:
             node = nodes.pop()
             if node.val == val:
                 return node
-            if node.left: nodes.append(node.left)
-            if node.right: nodes.append(node.right)
+            if node.val > val and node.left: nodes.append(node.left)
+            if node.val < val and node.right: nodes.append(node.right)
         return None
