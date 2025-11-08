@@ -15,11 +15,11 @@ class Solution:
         queue.append((root, lvl))
 
         while queue:
-            node, lvl = queue.pop()
+            node, lvl = queue.popleft()
             # add/ change the value in the dict
             right_side[lvl] = node.val
-            if node.right:
-                queue.append((node.right, lvl + 1))
             if node.left:
                 queue.append((node.left, lvl + 1))
+            if node.right:
+                queue.append((node.right, lvl + 1))
         return list(right_side.values())
